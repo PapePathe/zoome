@@ -1,7 +1,7 @@
-class Zoo < ApplicationRecord
+class Manager < ApplicationRecord
   validates :name,
     presence: true,
     length:   { maximum: 255 }
 
-  belongs_to :manager
+  has_many :zoos
 end
