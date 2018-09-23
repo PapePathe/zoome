@@ -10,12 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_23_144856) do
+ActiveRecord::Schema.define(version: 2018_09_23_152356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+
+  create_table "animal_keepers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.uuid "zoo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["zoo_id"], name: "index_animal_keepers_on_zoo_id"
+  end
+
+  create_table "doctors", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.uuid "zoo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["zoo_id"], name: "index_doctors_on_zoo_id"
+  end
 
   create_table "managers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
@@ -31,5 +47,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_144856) do
     t.index ["manager_id"], name: "index_zoos_on_manager_id"
   end
 
+  add_foreign_key "animal_keepers", "zoos"
+  add_foreign_key "doctors", "zoos"
   add_foreign_key "zoos", "managers"
 end

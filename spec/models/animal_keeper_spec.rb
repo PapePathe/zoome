@@ -1,27 +1,25 @@
-class Zoo < ApplicationRecord
-  validates :name,
-    presence: true,
-    length:   { maximum: 255 }
+require 'rails_helper'
 
-  belongs_to :manager
+RSpec.describe AnimalKeeper, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end
 
 # == Schema Information
 # Schema version: 20180923152356
 #
-# Table name: zoos
+# Table name: animal_keepers
 #
 #  id         :uuid             not null, primary key
 #  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  manager_id :uuid
+#  zoo_id     :uuid
 #
 # Indexes
 #
-#  index_zoos_on_manager_id  (manager_id)
+#  index_animal_keepers_on_zoo_id  (zoo_id)
 #
 # Foreign Keys
 #
-#  fk_rails_...  (manager_id => managers.id)
+#  fk_rails_...  (zoo_id => zoos.id)
 #

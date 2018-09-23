@@ -1,27 +1,23 @@
-class Zoo < ApplicationRecord
-  validates :name,
-    presence: true,
-    length:   { maximum: 255 }
-
-  belongs_to :manager
+class Doctor < ApplicationRecord
+  belongs_to :zoo
 end
 
 # == Schema Information
 # Schema version: 20180923152356
 #
-# Table name: zoos
+# Table name: doctors
 #
 #  id         :uuid             not null, primary key
 #  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  manager_id :uuid
+#  zoo_id     :uuid
 #
 # Indexes
 #
-#  index_zoos_on_manager_id  (manager_id)
+#  index_doctors_on_zoo_id  (zoo_id)
 #
 # Foreign Keys
 #
-#  fk_rails_...  (manager_id => managers.id)
+#  fk_rails_...  (zoo_id => zoos.id)
 #
