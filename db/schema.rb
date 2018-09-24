@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_23_152356) do
+ActiveRecord::Schema.define(version: 2018_09_23_161835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -25,12 +25,26 @@ ActiveRecord::Schema.define(version: 2018_09_23_152356) do
     t.index ["zoo_id"], name: "index_animal_keepers_on_zoo_id"
   end
 
+  create_table "animals", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "family_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["family_id"], name: "index_animals_on_family_id"
+  end
+
   create_table "doctors", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.uuid "zoo_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["zoo_id"], name: "index_doctors_on_zoo_id"
+  end
+
+  create_table "families", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "managers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -48,6 +62,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_152356) do
   end
 
   add_foreign_key "animal_keepers", "zoos"
+  add_foreign_key "animals", "families"
   add_foreign_key "doctors", "zoos"
   add_foreign_key "zoos", "managers"
 end
