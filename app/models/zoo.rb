@@ -4,6 +4,8 @@ class Zoo < ApplicationRecord
     length:   { maximum: 255 }
 
   belongs_to :manager
+  has_many   :doctors
+  has_many   :animal_keepers
 end
 
 # == Schema Information
