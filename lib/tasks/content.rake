@@ -1,15 +1,13 @@
 namespace :content do
   task seed: :environment do
-    AnimalKeeper.delete_all
-    Zoo.delete_all
-    Manager.delete_all
+    %w(AnimalKeeper Doctor Zoo Manager).each { |m| m.constantize.delete_all }
 
     man = Manager.new name: 'Pathe'
-    zoo = Zoo.create! name: 'Parc de Hann', manager: man
+    zoo = FactoryBot.create :zoo, manager: man
 
     10.times do
-      zoo.animal_keepers.create(name: FFaker::NameFR.first_name)
-      zoo.doctors.create(name: FFaker::NameFR.first_name)
+      FactoryBot.create :animal_keeper, zoo: zoo
+      zoo.doctors.create!(name: FFaker::NameFR.first_name)
     end
 
   end
