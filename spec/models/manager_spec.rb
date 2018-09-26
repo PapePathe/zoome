@@ -7,12 +7,18 @@ RSpec.describe Manager, type: :model do
 end
 
 # == Schema Information
-# Schema version: 20180923152356
+# Schema version: 20180926191222
 #
 # Table name: managers
 #
-#  id         :uuid             not null, primary key
-#  name       :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id              :uuid             not null, primary key
+#  email           :string
+#  name            :string
+#  password_digest :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+# Indexes
+#
+#  index_managers_on_email  (email) UNIQUE
 #
