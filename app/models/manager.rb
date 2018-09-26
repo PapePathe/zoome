@@ -3,6 +3,7 @@ class Manager < ApplicationRecord
     presence: true,
     length:   { maximum: 255 }
 
+  has_secure_password
   has_many :zoos
 end
 
