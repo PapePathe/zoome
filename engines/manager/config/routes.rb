@@ -7,5 +7,6 @@ Zoome::Manager::Engine.routes.draw do
 
   resources :doctors
   resources :animals
+  resources :families
   resources :animal_keepers
 end

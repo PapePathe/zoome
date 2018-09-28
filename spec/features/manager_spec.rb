@@ -39,6 +39,11 @@ describe "Manager engine", type: :system do
         click_link 'Animaux'
         expect(current_path).to eq(managers.animals_path)
       end
+
+      it "can navigate to families page" do
+        click_link 'Familles'
+        expect(current_path).to eq(managers.families_path)
+      end
     end
   end
 
