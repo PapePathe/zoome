@@ -34,8 +34,12 @@ describe "Manager engine", type: :system do
         click_link 'Gardiens'
         expect(current_path).to eq(managers.animal_keepers_path)
       end
-    end
 
+      it "can navigate to animals page" do
+        click_link 'Animaux'
+        expect(current_path).to eq(managers.animals_path)
+      end
+    end
   end
 
   context 'When not logged in' do
