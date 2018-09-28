@@ -1,3 +1,7 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/c3c8ee041d0771375e3d/maintainability)](https://codeclimate.com/github/PapePathe/zoome/maintainability)
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/c3c8ee041d0771375e3d/test_coverage)](https://codeclimate.com/github/PapePathe/zoome/test_coverage)
+
 # README
 
 This README would normally document whatever steps are necessary to get the
