@@ -30,6 +30,22 @@ describe "Manager engine", type: :system do
       end
     end
 
+    context 'Manage animal keepers' do
+      before(:each) do
+        visit managers.animal_keepers_path
+      end
+
+      it 'can create a new one' do
+        click_link   'Nouveau'
+        fill_in      'animal_keeper[job]',         with: 'Gardien'
+        fill_in      'animal_keeper[first_name]',  with: 'First Name'
+        fill_in      'animal_keeper[last_name]',   with: 'Last Name'
+        fill_in      'animal_keeper[birth_date]',  with: '1985-08-21'
+        click_button 'enregistrer'
+        expect(page).to have_content(Zoome::AnimalKeepers::Create::SUCCESS_MESSAGE)
+      end
+    end
+
     context "Nav links" do
       it { expect(page).to have_link('Tableau de bord') }
       it { expect(page).to have_link('Docteurs') }

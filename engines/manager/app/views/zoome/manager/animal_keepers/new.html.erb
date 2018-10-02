@@ -1,0 +1,25 @@
+<div class="card">
+  <div class="card-body">
+    <%= form_for @animal_keeper do |f| %>
+      <div class="form-group">
+        <%= f.label :job, 'Poste occupé' %>
+        <%= f.text_field :job, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :first_name, 'Prénom' %>
+        <%= f.text_field :first_name, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :last_name, 'Nom' %>
+        <%= f.text_field :last_name, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :birth_date, 'Date de naissance' %>
+        <%= f.date_field :birth_date, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.submit :enregistrer, class: 'btn btn-info' %>
+      </div>
+    <% end %>
+  </div>
+</div>

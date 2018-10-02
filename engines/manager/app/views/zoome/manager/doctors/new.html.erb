@@ -1,5 +1,4 @@
-<%= form_for @doctor || Doctor.new do |f| %>
-  <%= @doctor.try(:errors).inspect %>
+<%= form_for @doctor do |f| %>
   <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name %>
