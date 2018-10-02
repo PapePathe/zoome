@@ -1,0 +1,10 @@
+<%= form_for @doctor || Doctor.new do |f| %>
+  <%= @doctor.try(:errors).inspect %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="form-group">
+    <%= f.submit :enregistrer %>
+  </div>
+<% end %>

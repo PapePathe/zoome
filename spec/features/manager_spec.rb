@@ -12,8 +12,22 @@ describe "Manager engine", type: :system do
     let(:manager) { create(:manager) }
 
     before(:each) do
+      create(:zoo, manager: manager)
       login_manager! manager
       visit managers.root_path
+    end
+
+    context "Manage doctors" do
+      before(:each) do
+        visit managers.doctors_path
+      end
+
+      it 'can create a new one' do
+        click_link   'Nouveau'
+        fill_in      'doctor[name]', with: 'Doctor WHO'
+        click_button 'enregistrer'
+        expect(page).to have_content(Zoome::Docteurs::Create::SUCCESS_MESSAGE)
+      end
     end
 
     context "Nav links" do
