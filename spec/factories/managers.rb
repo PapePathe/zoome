@@ -1,7 +1,9 @@
 FactoryBot.define do
   factory :manager do
     name { "Pathe" }
-    email { "pathe@zoo.com" }
+    sequence :email do |n|
+      "pathe#{n}@zoo.com"
+    end
     password { "MyString" }
   end
 end
