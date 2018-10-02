@@ -1,9 +1,10 @@
 class Zoome::Docteurs::Create
-  NOT_A_ZOO_ERROR = 'Impossbible de créer un docteur sans zoo'.freeze
+  include Interactor
+  include ZooInteractorsAddons
+
   SUCCESS_MESSAGE = 'Docteur ajouté'.freeze
   CREATE_ERROR    = 'Une erreur empêche la création du docteur'.freeze
 
-  include Interactor
   ##
   # Example
   #
@@ -28,20 +29,5 @@ class Zoome::Docteurs::Create
       context.doctor  = doctor
       raise_error CREATE_ERROR
     end
-  end
-
-  def check_zoo!
-    unless zoo.is_a?(Zoo)
-      raise_error NOT_A_ZOO_ERROR
-    end
-  end
-
-  def zoo
-   context.zoo
-  end
-
-  def raise_error(message)
-    context.error = message
-    context.fail!
   end
 end
